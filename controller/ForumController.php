@@ -26,10 +26,32 @@ class ForumController extends Controller {
      * Display Index Action
      *
      * @return string
-     */
+     */ 
     private function indexAction() {
 
         $view = file_get_contents('view/page/forum/index.php');
+
+        $forumRepository = new ForumRepository();
+        $forumRepository->findAllCat();
+
+        ob_start();
+        eval('?>' . $view);
+        $content = ob_get_clean();
+
+        return $content;
+    }
+
+    /**
+     * Display Index Action
+     *
+     * @return string
+     */ 
+    private function allDiscussionsAction() {
+
+        $view = file_get_contents('view/page/forum/index.php');
+
+        $forumRepository = new ForumRepository();
+        $forumRepository->findAllCat();
 
         ob_start();
         eval('?>' . $view);
