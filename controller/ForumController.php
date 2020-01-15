@@ -32,7 +32,7 @@ class ForumController extends Controller {
         $view = file_get_contents('view/page/forum/index.php');
 
         $forumRepository = new ForumRepository();
-        $forumRepository->findAllCat();
+        $chokoCats = $forumRepository->findAllCat();
 
         ob_start();
         eval('?>' . $view);
