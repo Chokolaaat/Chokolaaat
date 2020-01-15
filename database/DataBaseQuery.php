@@ -18,12 +18,12 @@ class DataBaseQuery
      */
     public function __construct() {
 
-        $user   = $GLOBALS['MM_CONFIG']['database']['username'];
-        $pass   = $GLOBALS['MM_CONFIG']['database']['password'];
-        $dbname = $GLOBALS['MM_CONFIG']['database']['dbname'];
-        $host   = $GLOBALS['MM_CONFIG']['database']['host'];
-        $port   = $GLOBALS['MM_CONFIG']['database']['port'];
-        $charset = $GLOBALS['MM_CONFIG']['database']['charset'];
+        $user   = "root"; //$GLOBALS['MM_CONFIG']['database']['username'];
+        $pass   = "root"; //$GLOBALS['MM_CONFIG']['database']['password'];
+        $dbname = "choko_db"; //$GLOBALS['MM_CONFIG']['database']['dbname'];
+        $host   = "127.0.0.1"; //$GLOBALS['MM_CONFIG']['database']['host'];
+        $port   = 3306; //$GLOBALS['MM_CONFIG']['database']['port'];
+        $charset = "UTF8"; //$GLOBALS['MM_CONFIG']['database']['charset'];
 
         try
         {

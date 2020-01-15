@@ -19,7 +19,7 @@ class LoginRepository implements Entity {
     public function findAll() {
 
         $table = 't_user';
-        $columns = 'useLogin';
+        $columns = 'usePseudo';
 
         $request =  new DataBaseQuery();
         
@@ -38,7 +38,7 @@ class LoginRepository implements Entity {
 
         $table = 't_user';
         $columns = '*';
-        $where = "useLogin = '$login'";
+        $where = "usePseudo = '$login'";
 
         $request =  new DataBaseQuery();
 
