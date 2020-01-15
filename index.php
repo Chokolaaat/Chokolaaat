@@ -19,9 +19,9 @@ include 'controller/Controller.php';
 include 'controller/AdminController.php';
 include 'controller/HomeController.php';
 include 'controller/LoginController.php';
-include 'controller/ShopController.php';
 include 'controller/CartController.php';
 include 'controller/ProfileController.php';
+include 'controller/ForumController.php';
 
 date_default_timezone_set('Europe/Zurich');
 
@@ -35,7 +35,7 @@ class MainController {
     public function dispatch() {
 
         if (!isset($_GET['controller'])) {
-            $_GET['controller'] = 'shop';
+            $_GET['controller'] = 'home';
             $_GET['action'] = 'list';
         }
 
@@ -62,14 +62,14 @@ class MainController {
             case 'login':
                 $link = new LoginController();
                 break;
-            case 'shop':
-                $link = new ShopController();
-                break;
             case 'cart':
                 $link = new CartController();
                 break;
             case 'profile':
                 $link = new ProfileController();
+                break;
+            case 'forum':
+                $link = new ForumController();
                 break;
             default:
                 $link = new HomeController();

@@ -5,9 +5,10 @@
  * Shop
  */
 
-include_once 'classes/ShopRepository.php';
+include_once 'classes/AdminRepository.php';
+include_once 'classes/ForumRepository.php';
 
-class ShopController extends Controller {
+class ForumController extends Controller {
 
     /**
      * Dispatch current action
@@ -22,17 +23,13 @@ class ShopController extends Controller {
     }
 
     /**
-     * Display List Action
+     * Display Index Action
      *
      * @return string
      */
-    private function listAction() {
+    private function indexAction() {
 
-        $shopRepository = new ShopRepository();
-        $products = $shopRepository->findAll();
-
-        $view = file_get_contents('view/page/shop/list.php');
-
+        $view = file_get_contents('view/page/forum/index.php');
 
         ob_start();
         eval('?>' . $view);
@@ -42,22 +39,19 @@ class ShopController extends Controller {
     }
 
     /**
-     * Display Detail Action
+     * Display Contact Action
      *
      * @return string
      */
-    private function detailAction() {
+    private function contactAction() {
 
-        $shopRepository = new ShopRepository();
-        $product = $shopRepository->findOne($_GET['id']);
+        $view = file_get_contents('view/page/home/contact.php');
 
-        $view = file_get_contents('view/page/shop/detail.php');
 
         ob_start();
         eval('?>' . $view);
         $content = ob_get_clean();
 
         return $content;
-
     }
 }

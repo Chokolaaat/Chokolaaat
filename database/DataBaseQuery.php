@@ -5,7 +5,6 @@
  * Shop
  */
 
-include_once 'config.ini.php';
 
 class DataBaseQuery
 {
