@@ -1,8 +1,18 @@
-<h2>Choisir un moyen de livraison</h2>
-<form action="index.php?controller=cart&action=delivery" method="post">
-    <input type="radio" name="delivery" value="poste"> Par la poste (+ CHF 7.95)
-    <br>
-    <input type="radio" name="delivery" value="shop"> Retrait au magasin
-    <br><br>
-    <button type="submit" class="btn btn-default">Suivant</button>
-</form>
+<?php 
+
+//Affiche le titre de la discussion
+echo '<h2>'. $chokoDiscussion[0]['disName'] .'</h2>';
+
+//Affiche les tags
+echo 'Tags : ';
+foreach ($chokoTags as $tag){
+	echo $tag['tagName'] . ', ';
+}
+
+echo '<br><br>';
+
+//Affihe les messages
+foreach ($chokoMessage as $message){
+	echo 'Le message de '. $message['usePseudo'] .' dit "'. $message['mesText'] .'".<br>';
+}
+?>

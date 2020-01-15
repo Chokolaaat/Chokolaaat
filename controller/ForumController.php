@@ -23,7 +23,7 @@ class ForumController extends Controller {
     }
 
     /**
-     * Display Index Action
+     * Affiche les catégories
      *
      * @return string
      */ 
@@ -32,6 +32,8 @@ class ForumController extends Controller {
         $view = file_get_contents('view/page/forum/index.php');
 
         $forumRepository = new ForumRepository();
+
+        //Récupère toutes les catégories
         $chokoCats = $forumRepository->findAllCat();
 
         ob_start();
@@ -42,16 +44,48 @@ class ForumController extends Controller {
     }
 
     /**
-     * Display Index Action
+     * Affiche les discussions d'une catégorie
      *
      * @return string
      */ 
     private function allDiscussionsAction() {
 
-        $view = file_get_contents('view/page/forum/index.php');
+        $view = file_get_contents('view/page/forum/alldiscussions.php');
 
         $forumRepository = new ForumRepository();
-        $forumRepository->findAllCat();
+
+        //Récupère toutes les discusssions
+        $chokoDiscussions = $forumRepository->findAllDiscussions($_GET['cat']);
+
+        //Récupère le nom de la catégorie actuelle
+        $chokoCategorie = $forumRepository->findCatName($_GET['cat']);
+
+        ob_start();
+        eval('?>' . $view);
+        $content = ob_get_clean();
+
+        return $content;
+    }
+
+    /**
+     * Affiche une discussion
+     *
+     * @return string
+     */ 
+    private function discussionAction() {
+
+        $view = file_get_contents('view/page/forum/discussion.php');
+
+        $forumRepository = new ForumRepository();
+
+        //Récupère tous les messages
+        $chokoMessage = $forumRepository->findAllMessage($_GET['disc']);
+
+        //Récupère le nom de la discussion actuelle
+        $chokoDiscussion = $forumRepository->findDiscName($_GET['disc']);
+
+        //Récupère les tags de la discussion
+        $chokoTags = $forumRepository->findDiscTags($_GET['disc']);
 
         ob_start();
         eval('?>' . $view);

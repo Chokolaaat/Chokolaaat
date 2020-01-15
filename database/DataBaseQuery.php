@@ -46,9 +46,36 @@ class DataBaseQuery
      * @param string $columns
      * @return array
      */
-    public function select($table, $columns, $where = '', $orderBy = '') {
+    public function select($tables, $columns, $where = '', $orderBy = '') {
 
-        $query = 'SELECT ' . $columns . ' FROM ' . $table;
+        $query = 'SELECT ' . $columns . ' FROM ' . $tables;
+
+        if ($where !== '') {
+            $query .= ' WHERE ' . $where;
+        }
+
+        if ($orderBy !== '') {
+            $query .= ' ORDER BY ' . $orderBy;
+        }
+
+        return $this->rawQuery($query);
+
+    }
+
+    /**
+     * Select request with a join
+     *
+     * @param string $table
+     * @param string $columns
+     * @return array
+     */
+    public function selectJoin($tables, $columns, $join  = '', $where = '', $orderBy = '') {
+
+        $query = 'SELECT ' . $columns . ' FROM ' . $tables;
+
+        if ($join !== '') {
+            $query .= ' JOIN ' . $join;
+        }
 
         if ($where !== '') {
             $query .= ' WHERE ' . $where;

@@ -1,18 +1,10 @@
-<h2>Adresse d'envoi</h2>
-<form action="index.php?controller=cart&action=address" method="post">
-    <select name="gender">
-        <option value="Mr">Mr</option>
-        <option value="Mme">Mme</option>
-        <option value="Other">Autre</option>
-    </select><br>
-    <input type="text" name="lastname" placeholder="Nom">
-    <input type="text" name="firstname" placeholder="Prénom"><br>
-    <input type="text" name="street" placeholder="Rue">
-    <input type="text" name="number" placeholder="No"><br>
-    <input type="text" name="postcode" placeholder="NPA">
-    <input type="text" name="locality" placeholder="Localité"><br>
-    <input type="text" name="email" placeholder="Adresse mail">
-    <input type="text" name="phonenumber" placeholder="Téléphone">
-    <br><br>
-    <button type="submit" class="btn btn-default">Suivant</button>
-</form>
+<?php 
+
+//Affiche le titre de la catégorie
+echo '<h2>Discussions dans ' . $chokoCategorie[0]['catName'] . '</h2>';
+
+//Affiche toutes les discussions
+foreach ($chokoDiscussions as $discussions){
+	echo '<a href="index.php?controller=forum&action=discussion&disc=' . $discussions['idDiscussion']. '">' . $discussions['disName']. '</a><br>';
+}
+?>

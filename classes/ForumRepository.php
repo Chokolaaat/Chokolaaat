@@ -27,6 +27,93 @@ class ForumRepository {
     }
 
     /**
+     * Récupère toutes les discussions d'une catégorie
+     *
+     * @return array|resource
+     */
+    public function findAllDiscussions($cat) {
+
+        $table = 't_discussion';
+        $columns = 'idDiscussion, disName';
+        $where = 'fkCategory = '. $cat;
+
+        $request =  new DataBaseQuery();
+        
+        return $request->select($table, $columns, $where);
+
+    }
+
+    /**
+     * Récupère le nom de la catégorie actuelle
+     *
+     * @return array|resource
+     */
+    public function findCatName($cat) {
+
+        $table = 't_category';
+        $columns = 'catName';
+        $where = 'idCategory = '. $cat;
+
+        $request =  new DataBaseQuery();
+        
+        return $request->select($table, $columns, $where);
+
+    }
+
+    /**
+     * Récupère le nom de la discussion actuelle
+     *
+     * @return array|resource
+     */
+    public function findDiscName($disc) {
+
+        $table = 't_discussion';
+        $columns = 'disName';
+        $where = 'idDiscussion = '. $disc;
+
+        $request =  new DataBaseQuery();
+        
+        return $request->select($table, $columns, $where);
+
+    }
+
+    /**
+     * Récupère toutes les messages d'une discussion
+     *
+     * @return array|resource
+     */
+    public function findAllMessage($discussion) {
+
+        $table = 't_message';
+        $columns = 'idMessage, mesText, mesDate, idUser, usePseudo';
+        $join = 't_user ON fkUser = idUser';
+        $where = 'fkDiscussion = '. $discussion;
+
+        $request =  new DataBaseQuery();
+        
+        return $request->selectJoin($table, $columns, $join,$where);
+
+    }
+
+    /**
+     * Récupère toutes les tags d'une discussion
+     *
+     * @return array|resource
+     */
+    public function findDiscTags($discussion) {
+
+        $table = 't_tag';
+        $columns = 'idTag, tagName';
+        $join = 't_discussiontag ON fkTag = idTag';
+        $where = 'fkDiscussion = '. $discussion;
+
+        $request =  new DataBaseQuery();
+        
+        return $request->selectJoin($table, $columns, $join, $where);
+
+    }
+
+    /**
      * Find One entry
      *
      * @param $login
