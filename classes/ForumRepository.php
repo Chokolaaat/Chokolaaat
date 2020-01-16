@@ -34,7 +34,7 @@ class ForumRepository {
     public function findAllDiscussions($cat) {
 
         $table = 't_discussion';
-        $columns = 'idDiscussion, disName';
+        $columns = 'idDiscussion, disName, disPrioritized, disActive';
         $where = 'fkCategory = '. $cat;
 
         $request =  new DataBaseQuery();

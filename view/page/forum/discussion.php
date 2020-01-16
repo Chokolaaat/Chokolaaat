@@ -9,7 +9,7 @@ foreach ($chokoTags as $tag){
 	echo $tag['tagName'] . ', ';
 }
 
-echo '<br><br>';
+echo '<br><br>Messages :<br><br>';
 
 //Affihe les messages
 foreach ($chokoMessage as $message){
