@@ -12,7 +12,7 @@ else{
 		<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 			<form method="post" action="index.php?controller=login&action=login">
 				<div class="form-group">
-					<label for="login">Login</label>
+					<label for="login">Login ou Email</label>
 					<input name="login" type="text" class="form-control" id="login">
 				</div>
 				<div class="form-group">
